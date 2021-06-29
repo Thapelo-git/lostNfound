@@ -1,0 +1,320 @@
+*{
+    padding:0;
+    margin:0;
+    box-sizing:border-box;
+
+}
+body{
+    height: 1510px;
+    padding-bottom: 200px;
+    display: flex;
+    justify-content: center;
+}
+.container{
+    width: 1140px;
+    height: 100%;
+    border:3px solid blue;
+    position: relative;
+    overflow: hidden;
+    margin-top: 70px;
+    margin-left: 70px;
+    margin-right: 70px;
+    border-radius: 40px 0 0 0;
+    background: linear-gradient(45deg,rgb(103,21,211),rgb(77,25,221),rgb(143,24,223));
+}
+.profilesection{
+  width: 65%;
+  height: 210px;
+  border-top: 4px solid black; 
+  border-bottom: 2px solid black;
+  background-color: rgba(243,239,239, .3);
+  backdrop-filter: blur(10px);
+  padding: 20px; 
+  position:absolute;
+  left:0;
+  top:55px;
+}
+.profilesection::before{
+    content: "";
+    position: absolute;
+    width: 200px;
+    height: 250px;
+    border-radius: 50%;
+    border: 3px solid rgb(233, 228, 228);
+    top: -20px;
+    right: -110px;
+    background: url("mypic.jpg") center;
+    background-size: cover;
+}
+.container .profilesection .name{
+   font-size: 40px;
+   font-weight: 600;
+   font-style: italic;
+   color: white; 
+}
+img{
+    width: 20px;
+    height: 20px;
+}
+.container .profilesection ul li{
+    list-style: none;
+}
+.mainbox{
+    width: auto;
+    height: auto;
+    /* border: 2px solid black; */
+    margin-top: 300px;
+}
+ .box{
+    width: 49%;
+    margin: 20px;
+    height: 250px;
+    border: 1px solid white;
+    /* background-color: rgba(243,239,239, .3); */
+    /* backdrop-filter: blur(10px);
+    overflow: hidden; */
+    margin-top: 100px;
+} 
+.boxProfile{
+ position: absolute;
+}
+.boxProfile::before{
+width: 300px;
+height: 50px;
+background-color: white;
+border-radius: 60%;
+/* transform-origin: left;
+transform:rotate(-10deg); */
+transform-origin: center;
+content: "";
+position: absolute;
+left: 50px;  
+/* right: -5px; */
+top: -20px;
+}
+.hedP{
+    font-size: 30px;
+    color: blue;
+    font-style: italic;
+    position: absolute;
+    top: -20px;
+    margin-left: 150px;
+    /* left: 20px; */
+    /* z-index: 9999999; */   
+}
+.boxEducation{
+     position: absolute; 
+    /* z-index: -9999; */
+}
+.boxEducation::before{
+    width: 300px;
+    height: 50px;
+    background-color: white;
+    border-radius: 60%;
+    /* transform-origin: left;
+    transform:rotate(-10deg); */
+    transform-origin: center;
+    content: "";
+    position: absolute;
+    left: 50px;  
+    margin-top: 330px;
+    /* top: -20px;  */
+}
+.hedE{
+    font-size: 30px;
+    color: blue;
+    font-style: italic;
+    position: absolute;
+    top: -20px;
+    margin-left: 150px;
+    margin-top: 350px;
+    /* left: 20px; */
+    /* z-index: 9999999; */ 
+}
+.para{
+   /* position: absolute;
+     top: -20px; */
+    margin-left: 50px;
+    margin-top: 30px; 
+}
+.fontEdu{
+    margin-left: 30px;
+    margin-top: 400px; 
+}
+.boxEducation .linC{
+   margin-left: 30px;
+    color: cornflowerblue;
+    border: 2px solid;
+}
+.sel{
+    margin-left:30px ;
+}
+.selyear{
+    margin-left: 150px;
+}
+.fontDplo{
+    margin-left: 30px;
+   
+}
+.boxEducation .linD{
+    margin-left: 30px;
+    color: cornflowerblue;
+    border: 2px solid;
+}
+.tut{
+    margin-left:30px ;  
+}
+.tutyear{
+    margin-left: 150px; 
+}
+.boxExperience{
+    position: absolute;
+}
+.boxExperience::before{
+    width: 300px;
+    height: 100px;
+    background-color: white;
+    border-radius: 60%;  
+    transform-origin: center;
+    content: "";
+    position: absolute;
+    left: 50px;  
+    margin-top: 660px;
+}
+.fontExp{
+    font-size: 30px;
+    color: blue;
+    font-style: italic;
+     position: absolute; 
+    margin-left: 140px;
+    margin-top: 680px;
+}
+.table1{
+    /* position: absolute; */
+    margin-left: 80px;
+    margin-top: 780px; 
+}
+td{
+    font-size: 23px;
+}
+.mainrightbox{
+    width:auto;
+    height: auto;
+    /* border: 2px solid red; */
+    position: absolute;
+    right: 20px;
+    top: 300px;
+    margin-top: 20px;
+}
+.rightbox{
+    width: 350px;
+    height: 900px;
+    border: 1px solid white;
+    background-color: rgba(243,239,239, .3);
+    backdrop-filter: blur(10px);
+    margin-top: 0px;
+    border-radius: 3%;
+    border-right:rgba(176, 155, 216, 0.3) ;
+}
+.linS{
+    margin-right: 30px;
+    color: rgb(115, 155, 235);
+    border: 2px solid;  
+}
+.hedS{
+  margin-left: 20px;
+  letter-spacing: 1.5px;  
+}
+.mainrightbox .rightbox .table2{
+ width: 10%;
+  }
+/* progress{
+    margin-right: 0px;
+}
+.table2{
+  margin-top: 50px;  
+} */
+/* progress{
+    -webkit-appearance: none;
+    width: 300px;
+    height: 10px;
+}
+progress[value]::-webkit-progress-bar{
+    background-color: rgb(219,219,248);
+    border-radius: 20px;
+}*/
+/* progress::-webkit-progress-value{
+    border-radius: 2px;
+    background-size: 33px 20px,100% 100%,100% 100%;
+}
+  */
+  .hedL{
+    /* margin-left: 40px; */
+    padding: 20px;
+  }
+  .linLang{
+    margin-left: 5px;
+     
+    margin-right: 30px;
+    color: rgb(115, 155, 235);
+    border: 2px solid;   
+  }
+  .langbox{
+    position: absolute;   
+  }
+  .langbox::before{
+    width: 200px;
+    height: 40px;
+    background-color: rgb(173, 167, 167);
+    border-radius: 60%;
+    /* transform-origin: left;
+    transform:rotate(-10deg); */
+    transform-origin: center;
+    content: "";
+    position: absolute;
+    left: 50px;  
+    margin-top: 40px;
+  }
+  .langS{
+      margin-left: 120px;
+      margin-top: 50px;
+     position: absolute;
+  }
+  .langbox2{
+      position: absolute;
+  }
+  .langbox2::before{
+    width: 200px;
+    height: 40px;
+    background-color: rgb(173, 167, 167);
+    border-radius: 60%;
+    /* transform-origin: left;
+    transform:rotate(-10deg); */
+    transform-origin: center;
+    content: "";
+    position: absolute;
+    left: 50px;  
+    margin-top: 110px;  
+  }
+  .langE{
+    margin-left: 120px;
+    margin-top: 120px;
+   position: absolute; 
+  }
+.hedi{
+    margin-left: 40px;
+    margin-top: 150px; 
+}
+.lini{
+    margin-left: 120px;
+    color: rgb(115, 155, 235);
+    border: 2px solid; 
+    margin-left: 40px;
+    margin-right: 30px;
+}
+
+.mainrightbox .rightbox ul li{
+    font-size: 25px;
+    margin-left: 50px;
+   
+}
