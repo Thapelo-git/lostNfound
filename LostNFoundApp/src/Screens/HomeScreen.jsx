@@ -55,7 +55,7 @@ const HomeScreen = ({navigation}) => {
 
             })
         })
-        db.ref('/TutorUsers/' + user).on('value', snap => {
+        db.ref('/StudentCard/' + user).on('value', snap => {
 
             setName(snap.val() && snap.val().fullname);
             setPhonenumber(snap.val().phonenumber)
@@ -183,17 +183,14 @@ const HomeScreen = ({navigation}) => {
                   </View>
            </>)
     }
+    const [page,setPage]=useState(0)
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: '#fff', padding: 10 }}>
     <StatusBar
         backgroundColor="#EC8F05"
         barStyle="light-content"
     />
-    {/* <View style={styles.headerContainer}
-    >
-
-        <Text style={styles.headerTitle}>{ComName} company</Text>
-    </View> */}
+    
     <View style={styles.header}>
         <View style={{ flexDirection: 'row', justifyContent: 'center', alignItems: 'center' }}>
             <TouchableOpacity
@@ -217,24 +214,33 @@ const HomeScreen = ({navigation}) => {
   <Ionicons name="notifications" size={24}/>
   </TouchableOpacity> */}
     </View>
-
-    <View style={{
-        marginTop: 20,
-        flexDirection: 'row',
-        paddingHorizontal: 20,
-    }}>
-        <TouchableOpacity style={styles.inputContainer}
-            onPress={() => bottomopen.current.show()}>
-
-            <Ionicons name="search" size={24} />
-
-            <View
-                style={{ fontSize: 18, flex: 1, marginLeft: 10 }}
-            ><Text>Search by City</Text></View>
-
-
-        </TouchableOpacity>
-    </View>
+    <View style={{justifyContent:'center',alignItems:'center'}}>
+      <View style={{flexDirection:'row',justifyContent:'center',alignItems:'center',
+    width:250,height:60,backgroundColor:'gainsboro',borderRadius:30}}>
+          <TouchableOpacity style={{width:130,height:58,backgroundColor:page === 0?'#0225A1':'gainsboro',justifyContent:'center',
+        alignItems:'center',borderRadius:30}} 
+        onPress={()=>setPage(0)}>
+              <Text style={{color:page===0?'#fff':'#000',fontWeight:'bold'}}>Upcoming</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={{width:130,height:58,backgroundColor:page === 1?'#0225A1':'gainsboro',justifyContent:'center',
+        alignItems:'center',borderRadius:30}}
+        onPress={()=>setPage(1)}>
+              <Text style={{color:page===1?'#fff':'#000',fontWeight:'bold'}}>History</Text>
+          </TouchableOpacity>
+      </View>
+      {/* <View style={{
+    width:'100%',}}>
+        {
+            page === 0?(<Bookings/>):(null)
+        }
+        {
+            page === 1?(<HistoryScreen/>):(null)
+        }
+        
+        </View> */}
+      
+        </View>
+   
  
     <View style={{ paddingVertical: 20 }}>
 
