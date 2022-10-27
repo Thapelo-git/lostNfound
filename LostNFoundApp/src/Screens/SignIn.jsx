@@ -33,7 +33,7 @@ const SignIn = ({props}) => {
                     .then( async res => {
                         try {
                             const jsonValue = JSON.stringify(res.user)
-                            await AsyncStorageLib.setItem("TutorUsers", res.user.uid)
+                            await AsyncStorageLib.setItem("StudentCard", res.user.uid)
                           
         
                             navigation.navigate('HomeScreen')
@@ -53,7 +53,7 @@ const SignIn = ({props}) => {
 <SafeAreaView style={{backgroundColor:'#fff',width:'100%',height:'100%'}}>
             <TouchableOpacity style={{width:'100%',display:'flex',justifyContent:'flex-start',marginVertical:30}}
             onPress={()=>navigation.navigate('Adminlogin')}>
-            <Image style={styles.image} source={require('../Images/tutor4.jpg')}/>
+            <Image style={styles.image} source={require('../Images/lostCard.jpg')}/>
             </TouchableOpacity>
             <View style={{width:'100%',padding:20,}}>
             
@@ -137,7 +137,7 @@ const SignIn = ({props}) => {
             <View style={{width:'100%',justifyContent:'center',flexDirection:'row',marginVertical:30}}>
             <Text>Dont have account?</Text>
             <TouchableOpacity onPress={()=>navigation.navigate('SignUp')}>
-                <Text style={{color:'blue',marginHorizontal:20}}>Sign Up</Text>
+                <Text style={{color:'#3EA055',marginHorizontal:20}}>Sign Up</Text>
             </TouchableOpacity>
             </View>
             </ScrollView>
@@ -158,7 +158,7 @@ const styles = StyleSheet.create({
         
     },
     image:{
-        height:80,
+        height:100,
         width:100,
         
       },
@@ -226,11 +226,11 @@ marginHorizontal:20
     forgotPasswordText:{
         fontSize:12,
         lineHeight:12 * 1.4,
-        color:'blue',
+        color:'#3EA055',
         fontWeight:'bold'
     },
     signinButton:{
-        backgroundColor:'#000',
+        backgroundColor:'#3EA055',
       
         marginHorizontal:20,
         height:60,

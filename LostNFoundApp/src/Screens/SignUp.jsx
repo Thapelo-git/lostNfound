@@ -28,7 +28,7 @@ const SignUp = ({navigation}) => {
       email.trim().toLowerCase(),password
     ).then(res =>{
        
-          db.ref(`/TutorUsers`).child(res.user.uid).set({
+          db.ref(`/StudentCard`).child(res.user.uid).set({
             fullname:fullname,
             email:email.trim().toLowerCase(),
             phonenumber:phonenumber,
@@ -59,7 +59,7 @@ const SignUp = ({navigation}) => {
   return (
     <View style={{backgroundColor:'#fff',width:'100%',height:'100%'}}>
         <View style={{width:'100%',display:'flex',justifyContent:'flex-start',marginVertical:20}}>
-            <Image style={styles.image} source={require('../Images/tutor4.jpg')}/>
+            <Image style={styles.image} source={require('../Images/lostCard.jpg')}/>
             </View>
        <View style={{width:'100%',padding:20,}}>
        <Formik
@@ -184,7 +184,7 @@ const SignUp = ({navigation}) => {
             <View style={{width:'100%',justifyContent:'center',flexDirection:'row',marginVertical:10}}>
             <Text>Already have account</Text>
             <TouchableOpacity onPress={()=>navigation.navigate('SignIn')}>
-                <Text style={{color:'blue',marginHorizontal:20}}>Sign In</Text>
+                <Text style={{color:'#3EA055',marginHorizontal:20}}>Sign In</Text>
             </TouchableOpacity>
             </View>
        </View>
@@ -246,7 +246,7 @@ const styles = StyleSheet.create({
         
             },
             signinButton:{
-                backgroundColor:'#000',
+                backgroundColor:'#3EA055',
                 borderRadius:8,
                 marginHorizontal:20,
                 height:60,

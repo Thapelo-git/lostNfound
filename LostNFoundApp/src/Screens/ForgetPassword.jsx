@@ -31,7 +31,7 @@ const ForgetPassword = ({navigation}) => {
   return (
     <SafeAreaView style={{backgroundColor:'#fff',width:'100%',height:'100%'}}>
     <View style={{width:'100%',display:'flex',justifyContent:'flex-start',marginVertical:30}}>
-    <Image style={styles.image} source={require('../Images/tutor4.jpg')}/>
+    <Image style={styles.image} source={require('../Images/lostCard.jpg')}/>
     </View>
     <View style={{width:'100%',padding:20,}}>
     
@@ -89,7 +89,7 @@ const ForgetPassword = ({navigation}) => {
     <View style={{width:'100%',justifyContent:'center',flexDirection:'row',marginVertical:30}}>
     <Text>Have Account</Text>
     <TouchableOpacity onPress={()=>navigation.navigate('SignIn')}>
-        <Text style={{color:'blue',marginHorizontal:20}}>Sign Up</Text>
+        <Text style={{color:'#3EA055',marginHorizontal:20}}>Sign Up</Text>
     </TouchableOpacity>
     </View>
     </ScrollView>
@@ -182,7 +182,7 @@ marginHorizontal:20
         fontWeight:'bold'
     },
     signinButton:{
-        backgroundColor:'#000',
+        backgroundColor:'#3EA055',
       
         marginHorizontal:20,
         height:60,
