@@ -10,6 +10,7 @@ import Feather from 'react-native-vector-icons/Feather'
 import { Divider } from 'react-native-paper';
 import { auth,db } from './Firebase';
 import ModelSearch from './ModelSearch';
+import LostScreen from './LostScreen';
 const { width } = Dimensions.get("screen")
 const cardWidth = width / 1.8
 const HomeScreen = ({navigation}) => {
@@ -91,103 +92,12 @@ const HomeScreen = ({navigation}) => {
   
     }
     const bottomopen = useRef()
-    const Card = ({ element, index }) => {
-        return (
-           <>
-           <View style={{ margin: 20,backgroundColor: '#fff',elevation: 3 }}>
-           <View style={{width:'100%'}}>
-                      <View style={{ backgroundColor: 'gray', justifyContent: 'flex-start', flexDirection: 'row', padding: 8, alignItems:'center', borderBottomRightRadius:10}}>
-                       
-                        <Text style={{color: '#fff'}}>
-                          Location
-                        </Text>
-                        <Text style={{color: '#fff'}}>
-                          {" "}{element.location}
-                        </Text>
-                      </View>
-                    </View>
-
-                    <Divider style={{width: 90, justifyContent:'flex-end', alignItems:'flex-end', alignSelf:'flex-end'}}/>
-
-                    {/* event type */}
-                    <View style={{flexDirection:'row',}}>
-                    <View style={{ backgroundColor: '#fff', justifyContent: 'flex-end', flexDirection: 'row', padding: 8, alignItems:'center'}}>
-                      {/* <Ionicons name="documents" color='#333' size={20} /> */}
-                      <Text style={{paddingHorizontal: 5,color:'#333'}}>
-                       
-                      </Text>
-                    </View>
-                    <View style={{ backgroundColor: '#fff', justifyContent:'flex-start', flexDirection: 'row', padding: 8, alignItems:'center'}}>
-                    
-                      <Text style={{paddingHorizontal: 5,color:'#333'}}>
-                       {element.Avalability}  Tutor
-                      </Text>
-                    </View>
-                    </View>
-                    <Divider style={{width: 120, justifyContent:'flex-end', alignItems:'flex-end', alignSelf:'flex-end'}}/>
-
-                    {/* date */}
-                    <View style={{ backgroundColor: '#fff', justifyContent: 'flex-end', flexDirection: 'row', padding: 8, alignItems:'center' }}>
-                      {/* <Feather
-                        name="calendar" size={20}
-                        style={{ paddingHorizontal: 5 }}
-                        color='blue'
-                      /> */}
-                      <Text>R:</Text>
-                      <Text style={{color:'blue', fontSize:12}}>
-                        {element.Price} per {element.StartDate}
-                      </Text>
-                    </View>
-
-                    <Divider style={{width: 170, justifyContent:'flex-end', alignItems:'flex-end', alignSelf:'flex-end'}}/>
-
-                  {/* location */}
-                  <View style={{flexDirection:'row'}}>
-                  <View style={{ backgroundColor: '#fff', justifyContent: 'flex-end', flexDirection: 'row', padding: 8 , alignItems:'center'}}>
-                    <View>
-                    <Text>Name: </Text>
-                    <Text style={{color:'#333'}}>
-                      {element.fullname}
-                    </Text>
-                    </View>
-                    <View>
-                    <Text>Gender: </Text>
-                    <Text style={{color:'#333'}}>
-                      {element.Gender}
-                    </Text>
-                    </View>
-                  </View>
-                  <View style={{ backgroundColor: '#fff', justifyContent:'flex-start', flexDirection: 'row', padding: 8 , alignItems:'center'}}>
-                    <View>
-                    <Text>Specialist of: </Text>
-                    <Text style={{color:'#333'}}>
-                      {element.Subject}
-                    </Text>
-                    </View>
-                    
-                  </View>
-                  </View>
-                  <Divider style={{width: 200, justifyContent:'flex-end', alignItems:'flex-end', alignSelf:'flex-end'}}/>
-
-                  {/* description */}
-                  <View style={{ justifyContent: 'center',  padding: 8,marginHorizontal:10 }}>
-                  <TouchableOpacity style={styles.signinButton}
-              onPress={()=>updateAccept(element.key,element.Avalability,
-              element.Gender,element.Price,element.StartDate,element.Subject,element.fullname,
-              element.location,)} >
-                <Text style={styles.signinButtonText}
-                
-                >Request</Text>
-            </TouchableOpacity>
-                  </View>
-                  </View>
-           </>)
-    }
+    
     const [page,setPage]=useState(0)
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: '#fff', padding: 10 }}>
     <StatusBar
-        backgroundColor="#EC8F05"
+        backgroundColor="#3EA055"
         barStyle="light-content"
     />
     
@@ -216,72 +126,32 @@ const HomeScreen = ({navigation}) => {
     </View>
     <View style={{justifyContent:'center',alignItems:'center'}}>
       <View style={{flexDirection:'row',justifyContent:'center',alignItems:'center',
-    width:250,height:60,backgroundColor:'gainsboro',borderRadius:30}}>
-          <TouchableOpacity style={{width:130,height:58,backgroundColor:page === 0?'#0225A1':'gainsboro',justifyContent:'center',
-        alignItems:'center',borderRadius:30}} 
+    width:250,height:60,}}>
+          <TouchableOpacity style={{width:130,height:45,borderColor:page === 0?'#3EA055':'gainsboro',justifyContent:'center',
+        alignItems:'center',borderWidth:1}} 
         onPress={()=>setPage(0)}>
-              <Text style={{color:page===0?'#fff':'#000',fontWeight:'bold'}}>Upcoming</Text>
+              <Text style={{color:page===0?'#3EA055':'gainsboro',fontWeight:'bold'}}>Lost Card</Text>
           </TouchableOpacity>
-          <TouchableOpacity style={{width:130,height:58,backgroundColor:page === 1?'#0225A1':'gainsboro',justifyContent:'center',
-        alignItems:'center',borderRadius:30}}
+          <TouchableOpacity style={{width:130,height:45,borderColor:page === 1?'#3EA055':'gainsboro',justifyContent:'center',
+        alignItems:'center',borderWidth:1}}
         onPress={()=>setPage(1)}>
-              <Text style={{color:page===1?'#fff':'#000',fontWeight:'bold'}}>History</Text>
+              <Text style={{color:page===1?'#3EA055':'gainsboro',fontWeight:'bold'}}>Found Card</Text>
           </TouchableOpacity>
       </View>
-      {/* <View style={{
+      <View style={{
     width:'100%',}}>
         {
-            page === 0?(<Bookings/>):(null)
+            page === 0?(<LostScreen/>):(null)
         }
-        {
+        {/* {
             page === 1?(<HistoryScreen/>):(null)
-        }
+        } */}
         
-        </View> */}
+        </View>
       
         </View>
    
- 
-    <View style={{ paddingVertical: 20 }}>
 
-        <Text style={styles.titles}>Choose by Subject</Text>
-
-        <Picker
-            selectedValue={StudentContainer}
-            style={{ width: 300, height: 50, backgroundColor: '#eee' }}
-            onValueChange={(value, id) => { FilterFunction(value) }}>
-            <Picker.Item label="select" value="" />
-            <Picker.Item label="Mathematics" value="Mathematics" />
-            <Picker.Item label="Physical Sciences" value="PS" />
-            <Picker.Item label="Life Sciences" value="LS" />
-            <Picker.Item label="Natural Sciences" value="NS" />
-            <Picker.Item label="History" value="History" />
-            <Picker.Item label="Other" value="Other" />
-        </Picker>
-        <FlatList
-            keyExtractor={(_, key) => key.toString()}
-           horizontal
-            showsVerticalScrollIndicator={false}
-            contentContainerStyle={{ paddingLeft: 20 }}
-            data={StudentsList}
-            renderItem={({ item, index }) => <Card element={item} index={index} />}
-        />
-
-<View style={{
-        marginTop: 20,
-        flexDirection: 'row',
-        paddingHorizontal: 20,
-    }}>
-        <TouchableOpacity style={styles.buttonContainer}
-            onPress={() => navigation.navigate('Profile')}>
-            
-            <View
-                style={{ fontSize: 18, flex: 1, marginLeft: 10 }} >
-                    <Text>Tell us more about your self</Text></View>
-                    <Feather name="arrow-right" size={24} />
-        </TouchableOpacity>
-    </View>
-    </View>
     <ModelSearch bottomopen={bottomopen} navigation={navigation} />
 
 </SafeAreaView>
