@@ -7,6 +7,7 @@ import LostScreen from './LostScreen';
 import LostDetails from './LostDetails';
 import {Avatar ,Button, Divider} from 'react-native-elements';
 import AdminHome from './AdminHome';
+import SplashScreen from './SplashScreen';
 //AdminView
 const AdminView = ({navigation,route}) => {
   const [page,setPage]=useState(0)
@@ -58,7 +59,9 @@ const AdminView = ({navigation,route}) => {
         {
             page === 1?(<AdminHome navigation={navigation}/>):(null)
         }
-        
+         {
+            page === 2?(<SplashScreen navigation={navigation}/>):(null)
+        }
         
         </View>
       
