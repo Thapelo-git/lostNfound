@@ -1,33 +1,62 @@
 import { View, Text ,Dimensions, SafeAreaView,Image,StyleSheet,TouchableOpacity,TextInput,
   FlatList} from 'react-native'
 import Feather from 'react-native-vector-icons/Feather'
-import React ,{useState} from 'react'
+import React ,{useState,useEffect} from 'react'
 import { Formik } from 'formik'
 import * as yup from 'yup'
 import { auth ,db} from './Firebase'
 import {Avatar ,Button, Divider} from 'react-native-elements';
 import { ScrollView } from 'react-native-gesture-handler'
 const FoundDetails = () => {
-  const ReviewSchem=yup.object({
-    IDnumber:yup.string().required().min(13).max(13),
-    Name:yup.string().required().min(3),
-    Initials:yup.string().required().min(1),
-    StudentNumber:yup.number().required().min(9),
+ 
+  const [Student, setStudent] = useState([])
+  const [filteredDataSource, setFilteredDataSource] = useState([]);
+  const [masterDataSource, setMasterDataSource] = useState([]);
+  const user = auth.currentUser.uid;
+  const [searchText,setSearchText]=useState('')
+  useEffect(() => {
+      db.ref('/LostCard').on('value', snap => {
 
-})
-const user = auth.currentUser.uid;
-const addVehicle = (data) => {
-const {IDnumber,StudentNumber,Name,Initials} =data
-  db.ref('StudentList').push({
-    Status:'Lost',
-    IDnumber,
-    StudentNumber,
-    Name,
-    Initials,
-  })
-//   navigation.goBack()
-
-};
+          const Student = []
+          snap.forEach(action => {
+              const key = action.key
+              const data = action.val()
+              Student.push({
+                  key: key,
+                  Status: data.Status,
+                  IDnumber:data.IDnumber,Initials:data.Initials,
+                  Name:data.Name, StudentNumber:data.StudentNumber,
+                  
+              })
+              setStudent(Student)
+              const text='Found'
+              if(text){
+               const newData = Student.filter(function(item){
+                   const itemData = item.Status ? item.Status
+                   :'';
+                   const textData = text;
+                   return itemData.indexOf( textData)>-1;
+   
+               })
+              
+               setFilteredDataSource(newData);
+               setMasterDataSource(newData);
+             }
+  
+          })
+      })
+  }, [])
+  const updateAvailability = (key) => { 
+    db.ref('LostCard').child(key).update({Status:'Lost'})
+      .then(()=>db.ref('LostCard').once('value'))
+      .then(snapshot=>snapshot.val())
+      .catch(error => ({
+        errorCode: error.code,
+        errorMessage: error.message
+      }));
+ 
+ 
+ }
   return (
     <SafeAreaView style={{padding:10}}>
           <View style={styles.headerContainer}>
@@ -36,79 +65,43 @@ const {IDnumber,StudentNumber,Name,Initials} =data
    
     <Divider style={{alignItems:'flex-start',alignSelf:'flex-start',marginVertical:20,
       justifyContent:'flex-start',width:100}}/>
-      <Formik
-        initialValues={{IDnumber:'',Name:'',StudentNumber:'',Initials:''}}
-        validationSchema={ReviewSchem}
-        onSubmit={(values,action)=>{
-            action.resetForm()
-            addVehicle(values)
-        }}
-        >
-            {(props)=>(<ScrollView>
-                <View style={{display:'flex',flexDirection:'row',}}>
-                    <View>
-        <Text>Enter your  Surname </Text>
-    <View style={styles.inputContainer}><View style={styles.iconContainer} >
-                        <Feather name="user" size={22} style={{marginRight:10}}/></View>
-                       <TextInput
-                        style={styles.input}
-                      
-                        placeholder="Enter Surname"
-                        onChangeText={props.handleChange('Name')}
-             value={props.values.Name}
-             onBlur={props.handleBlur('Name')}
-                         />
-                    </View>
-                    <Text style={{color:'red',marginTop:-10}}>{props.touched.Name && props.errors.Name}</Text>
-                    </View>
-                    <View style={{display:'flex',alignItems:'flex-end',justifyContent:'flex-end'}}>
-        <Text>Enter your  Initials </Text>
-    <View style={styles.inputInitials}><View style={styles.iconContainer} >
-                        <Feather name="user" size={22} style={{marginRight:10}}/></View>
-                       <TextInput
-                        style={styles.input}
-                      
-                        placeholder="Initials"
-                        onChangeText={props.handleChange('Initials')}
-             value={props.values.Initials}
-             onBlur={props.handleBlur('Initials')}
-                         />
-                    </View>
-                    <Text style={{color:'red',marginTop:-10}}>{props.touched.Initials && props.errors.Initials}</Text>
-                    </View>
-                    </View>
-    <Text>Enter  ID Number </Text>
-    <View style={styles.inputContainer}><View style={styles.iconContainer} >
-                        <Feather name="user" size={22} style={{marginRight:10}}/></View>
-                       <TextInput
-                        style={styles.input}
-                    
-                        placeholder="Enter ID Number"
-                        onChangeText={props.handleChange('IDnumber')}
-                        value={props.values.IDnumber}
-                        onBlur={props.handleBlur('IDnumber')}/>
-                    </View>
-                    <Text style={{color:'red',marginTop:-10}}>{props.touched.IDnumber && props.errors.IDnumber}</Text>
-                    <Text>Enter  Student Number</Text>
-    <View style={styles.inputContainer}><View style={styles.iconContainer} >
-                        <Feather name="user" size={22} style={{marginRight:10}}/></View>
-                       <TextInput
-                        style={styles.input}
-                     
-                        placeholder="Enter Student Number"
-                        onChangeText={props.handleChange('StudentNumber')}
-                        value={props.values.StudentNumber}
-                        onBlur={props.handleBlur('StudentNumber')} />
-                    </View>
-                    <Text style={{color:'red',marginTop:-10}}>{props.touched.StudentNumber && props.errors.StudentNumber}</Text>
-                                    <View style={{justifyContent:'center',alignItems:'center',width:'100%'}}>
-                                    <TouchableOpacity style={styles.signinButton}
-                                 onPress={props.handleSubmit}>
-                              <Text style={styles.signinButtonText}>Submit</Text>
-                          </TouchableOpacity>
-                                   
-                            </View></ScrollView>)}
-                    </Formik>
+     <Text>Enter Student Number</Text>
+        <View style={{
+                marginTop: 20,
+                flexDirection: 'row',
+                paddingHorizontal: 20,
+            }}>
+                <View style={styles.inputContainer}>
+
+                    {/* <Ionicons name="profile" size={24} /> */}
+
+                    <TextInput
+                        style={{ fontSize: 18, flex: 1, marginLeft: 10 }}
+                        
+                        placeholder="Enter  Student Number"
+                        onChangeText={(text) => setSearchText(text)} />
+                  
+                </View>
+            </View>
+            {
+            Student.map((element)=>{return(<>
+           
+           {
+              element.StudentNumber === searchText ?(
+                <View style={{padding:20}}>
+                
+                <Text>Post Card to Lost List</Text>
+                <TouchableOpacity style={styles.signinButton}
+          onPress={()=>updateAvailability(element.key,)} >
+                  <Text style={styles.signinButtonText}>Post Card</Text>
+                  </TouchableOpacity></View>
+              ):(<>
+              <Text>We don't have that  Student number Register with Admin</Text></>)
+            }
+              
+                </>
+            )})
+        }
     
     </SafeAreaView>
   )
@@ -127,15 +120,28 @@ const styles = StyleSheet.create({
     borderRadius: 10
 },
 inputContainer:{
-    flexDirection: "row",
-    alignItems: "center",
-    borderColor: "rgba(0,0,0,.2)",
-    borderWidth: 1,
-    height: 60,
-    borderRadius: 15,
-    paddingHorizontal: 5,
-    marginVertical: 10
+      
+  height:50,
+  width:'100%',
+  borderRadius:10,
+  // borderWidth:1,
+  flexDirection:'row',
+  backgroundColor:'#eee',
+  alignItems:'center',
+  paddingHorizontal:20, 
+  
+  
 },
+// inputContainer:{
+//     flexDirection: "row",
+//     alignItems: "center",
+//     borderColor: "rgba(0,0,0,.2)",
+//     borderWidth: 1,
+//     height: 60,
+//     borderRadius: 15,
+//     paddingHorizontal: 5,
+//     marginVertical: 10
+// },
 inputInitials:{
     flexDirection: "row",
     alignItems: "center",

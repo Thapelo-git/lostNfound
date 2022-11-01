@@ -32,7 +32,7 @@ const TabScreen = () => {
         }}
       />
      
-      <Tab.Screen
+      {/* <Tab.Screen
         name="Lost"
         component={LostDetails}
         options={{
@@ -42,12 +42,12 @@ const TabScreen = () => {
           
           ),
         }}
-      />
+      /> */}
       <Tab.Screen
         name="Found"
         component={FoundDetails}
         options={{
-          tabBarLabel: 'Found',
+          tabBarLabel: 'Lost',
           tabBarIcon: ({ color }) => (
             <FontAwesome name="vcard" color={color} size={24} />
           

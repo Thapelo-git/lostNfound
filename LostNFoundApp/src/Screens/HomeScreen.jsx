@@ -11,6 +11,7 @@ import { Divider } from 'react-native-paper';
 import { auth,db } from './Firebase';
 import ModelSearch from './ModelSearch';
 import LostScreen from './LostScreen';
+import FoundScreen from './FoundScreen';
 const { width } = Dimensions.get("screen")
 const cardWidth = width / 1.8
 const HomeScreen = ({navigation}) => {
@@ -143,9 +144,9 @@ const HomeScreen = ({navigation}) => {
         {
             page === 0?(<LostScreen/>):(null)
         }
-        {/* {
-            page === 1?(<HistoryScreen/>):(null)
-        } */}
+        {
+            page === 1?(<FoundScreen/>):(null)
+        }
         
         </View>
       
