@@ -6,7 +6,7 @@ import {
 import Feather from 'react-native-vector-icons/Feather'
 import { Divider } from 'react-native-paper';
 import { db,auth } from './Firebase';
-const LostScreen = () => {
+const LostScreen = ({navigation}) => {
     const [Student, setStudent] = useState([])
     const [filteredDataSource, setFilteredDataSource] = useState();
     const [masterDataSource, setMasterDataSource] = useState([]);
@@ -45,6 +45,10 @@ const LostScreen = () => {
     const Card = ({ element, index }) => {
         return (
            <>
+           <Text>Found Card </Text>
+           <TouchableOpacity 
+       onPress={()=>navigation.navigate('ViewRating',{element:element,index:index})}>
+        <Text style={{color:'blue'}}>Click here</Text></TouchableOpacity>
            <View style={{ margin: 20,backgroundColor: '#fff',elevation: 3 }}>
            <View style={{width:'100%'}}>
                       <View style={{  justifyContent: 'flex-start', flexDirection: 'row', padding: 8, alignItems:'center', borderBottomRightRadius:10}}>
@@ -120,7 +124,7 @@ const LostScreen = () => {
     <View>
        <FlatList
             keyExtractor={(_, key) => key.toString()}
-           horizontal
+      
             showsVerticalScrollIndicator={false}
             contentContainerStyle={{ paddingLeft: 20 }}
             data={Student}

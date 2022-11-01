@@ -142,10 +142,10 @@ const HomeScreen = ({navigation}) => {
       <View style={{
     width:'100%',}}>
         {
-            page === 0?(<LostScreen/>):(null)
+            page === 0?(<LostScreen navigation={navigation}/>):(null)
         }
         {
-            page === 1?(<FoundScreen/>):(null)
+            page === 1?(<FoundScreen navigation={navigation}/>):(null)
         }
         
         </View>
