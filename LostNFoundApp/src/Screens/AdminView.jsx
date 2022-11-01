@@ -6,6 +6,7 @@ import { Rating, AirbnbRating } from 'react-native-ratings';
 import LostScreen from './LostScreen';
 import LostDetails from './LostDetails';
 import {Avatar ,Button, Divider} from 'react-native-elements';
+import AdminHome from './AdminHome';
 //AdminView
 const AdminView = ({navigation,route}) => {
   const [page,setPage]=useState(0)
@@ -28,7 +29,7 @@ const AdminView = ({navigation,route}) => {
             <Feather name="arrow-left" size={30} color='black'
               onPress={() => navigation.goBack()} />
           </View>
-          <Text style={styles.headerTitle}>Loguot</Text>
+          <Text style={styles.headerTitle}>Logout</Text>
         </View>
         <View style={{justifyContent:'center',alignItems:'center'}}>
       <View style={{flexDirection:'row',justifyContent:'center',alignItems:'center',
@@ -55,7 +56,7 @@ const AdminView = ({navigation,route}) => {
             page === 0?(<LostDetails/>):(null)
         }
         {
-            page === 1?(<LostScreen/>):(null)
+            page === 1?(<AdminHome navigation={navigation}/>):(null)
         }
         
         

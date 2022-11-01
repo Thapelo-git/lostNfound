@@ -18,7 +18,7 @@ const LostDetails = () => {
     const user = auth.currentUser.uid;
   const addVehicle = (data) => {
     const {IDnumber,StudentNumber,Name,Initials} =data
-      db.ref('LostCard').push({
+      db.ref('StudentList').push({
       
         IDnumber,
         StudentNumber,
