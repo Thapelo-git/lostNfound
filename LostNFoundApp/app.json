@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "kid_side",
-    "slug": "kid_side",
+    "name": "LostNFound",
+    "slug": "LostNFound",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",

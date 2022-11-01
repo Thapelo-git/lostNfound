@@ -53,6 +53,7 @@ export default function App() {
       <Stack.Screen name="Adminlogin" component={Adminlogin} />
       <Stack.Screen name="AdminHome" component={AdminHome} />
       <Stack.Screen name="AdminView" component={AdminView} />
+      
       </Stack.Navigator>
     </NavigationContainer>
   );

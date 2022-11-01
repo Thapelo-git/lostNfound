@@ -165,8 +165,8 @@ const AdminHome = ({navigation}) => {
                   </View>
            </>)
     }
-    const updateAvailability = () => {
-        db.ref('TutorUsers').child(Key).update({Description:'Available'})
+    const updateAvailability = (key) => { 
+        db.ref('TutorUsers').child(key).update({Description:'Available'})
           .then(()=>db.ref('TutorUsers').once('value'))
           .then(snapshot=>snapshot.val())
           .catch(error => ({
@@ -257,7 +257,7 @@ const AdminHome = ({navigation}) => {
                   {/* description */}
                   <View style={{ justifyContent: 'center',  padding: 8,marginHorizontal:10 }}>
                   <TouchableOpacity style={styles.signinButton}
-              onPress={()=>updateAvailability()} >
+              onPress={()=>updateAvailability(element.key,element.Description)} >
                 <Text style={styles.signinButtonText}
                 
                 >Add to list</Text>

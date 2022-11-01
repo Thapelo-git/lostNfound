@@ -19,7 +19,7 @@ const LostDetails = () => {
   const addVehicle = (data) => {
     const {IDnumber,StudentNumber,Name,Initials} =data
       db.ref('LostCard').push({
-        Status:'Lost',
+      
         IDnumber,
         StudentNumber,
         Name,
@@ -30,12 +30,12 @@ const LostDetails = () => {
   };
   return (
     <SafeAreaView style={{padding:10}}>
-          <View style={styles.headerContainer}>
+          {/* <View style={styles.headerContainer}>
      <Text style={styles.headerTitle}>Lost Student Card?</Text>
             </View>
    
     <Divider style={{alignItems:'flex-start',alignSelf:'flex-start',marginVertical:20,
-      justifyContent:'flex-start',width:100}}/>
+      justifyContent:'flex-start',width:100}}/> */}
       <Formik
         initialValues={{IDnumber:'',Name:'',StudentNumber:'',Initials:''}}
         validationSchema={ReviewSchem}
