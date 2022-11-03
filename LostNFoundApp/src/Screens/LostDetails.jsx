@@ -47,7 +47,7 @@ const LostDetails = () => {
             {(props)=>(<ScrollView>
                 <View style={{display:'flex',flexDirection:'row',}}>
                     <View>
-        <Text>Enter your  Surname </Text>
+        <Text>Enter   Surname </Text>
     <View style={styles.inputContainer}><View style={styles.iconContainer} >
                         <Feather name="user" size={22} style={{marginRight:10}}/></View>
                        <TextInput
@@ -62,7 +62,7 @@ const LostDetails = () => {
                     <Text style={{color:'red',marginTop:-10}}>{props.touched.Name && props.errors.Name}</Text>
                     </View>
                     <View style={{display:'flex',alignItems:'flex-end',justifyContent:'flex-end'}}>
-        <Text>Enter your  Initials </Text>
+        <Text>Enter  Initials </Text>
     <View style={styles.inputInitials}><View style={styles.iconContainer} >
                         <Feather name="user" size={22} style={{marginRight:10}}/></View>
                        <TextInput

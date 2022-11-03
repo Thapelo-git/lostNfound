@@ -23,7 +23,7 @@ const LostScreen = ({navigation}) => {
                     Status: data.Status,
                     IDnumber:data.IDnumber,Initials:data.Initials,
                     Name:data.Name, StudentNumber:data.StudentNumber,
-                    
+                    Description:data.Description
                 })
                 const text='Lost'
                 if(text){
@@ -49,9 +49,12 @@ const LostScreen = ({navigation}) => {
            <TouchableOpacity 
        onPress={()=>navigation.navigate('ViewRating',{element:element,index:index})}>
         <Text style={{color:'blue'}}>Click here</Text></TouchableOpacity>
+        <Text>{element.Description}</Text>
            <View style={{ margin: 20,backgroundColor: '#fff',elevation: 3 }}>
            <View style={{width:'100%'}}>
+            
                       <View style={{  justifyContent: 'flex-start', flexDirection: 'row', padding: 8, alignItems:'center', borderBottomRightRadius:10}}>
+                       
                     <Image source={require('../Images/tutemblem.jpg')}
                     style={{ width:230,height:70}}/>
                       </View>

@@ -23,51 +23,7 @@ const HomeScreen = ({navigation}) => {
     const [Student, setStudent] = useState([])
 
     const user = auth.currentUser.uid;
-    useEffect(() => {
-        db.ref('/TutorUsers').on('value', snap => {
-
-            const Student = []
-            snap.forEach(action => {
-                const key = action.key
-                const data = action.val()
-                Student.push({
-                    key: key,
-                    Avalability: data.Avalability,
-                    fullname:data.fullname,location:data.location,
-                    Description:data.Description, Gender:data.Gender,
-                    email:data.email,StartDate:data.StartDate,
-                    Subject:data.Subject,Price:data.Price
-                })
-                const text='Available'
-                if(text){
-                 const newData = Student.filter(function(item){
-                     const itemData = item.Description ? item.Description
-                     :'';
-                     const textData = text;
-                     return itemData.indexOf( textData)>-1;
-     
-                 })
-                 setStudent(newData)
-                 setFilteredDataSource(newData);
-                 setMasterDataSource(newData);
-               }
-                 
-               
-               
-
-            })
-        })
-        db.ref('/StudentCard/' + user).on('value', snap => {
-
-            setName(snap.val() && snap.val().fullname);
-            setPhonenumber(snap.val().phonenumber)
-            setEmail(snap.val().email)
-            
-        })
-
-
-
-    }, [])
+    
     const [StudentsList, setStudentsList] = useState([]);
     const [StudentContainer, setStudentContainer] = useState('')
     const FilterFunction = (text) => {

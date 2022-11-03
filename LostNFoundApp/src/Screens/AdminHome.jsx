@@ -62,7 +62,7 @@ const AdminHome = ({navigation}) => {
     }
 }
   const updateAvailability = (key) => { 
-    db.ref('LostCard').child(key).update({Description:'Admin have your the Card'})
+    db.ref('LostCard').child(key).update({Description:'Admin have your  Card'})
       .then(()=>db.ref('LostCard').once('value'))
       .then(snapshot=>snapshot.val())
       .catch(error => ({
