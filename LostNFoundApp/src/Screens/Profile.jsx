@@ -22,11 +22,11 @@ const Profile = ({navigation}) => {
             setPhonenumber(snap.val().phonenumber)
             setEmail(snap.val().email)
             setUid(snap.val().uid)
-        })
+        }) 
 
     }, [])
     const onSignout =()=>{
-        // auth
+        // auth resting burg
         // .signOut()
         navigation.navigate('SignIn')
     }

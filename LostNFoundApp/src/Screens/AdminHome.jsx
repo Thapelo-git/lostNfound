@@ -61,6 +61,8 @@ const AdminHome = ({navigation}) => {
         
     }
 }
+//DESIRE DESTINATION
+//enter 
   const updateAvailability = (key) => { 
     db.ref('LostCard').child(key).update({Description:'Admin have your  Card'})
       .then(()=>db.ref('LostCard').once('value'))
