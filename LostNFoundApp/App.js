@@ -61,6 +61,7 @@ export default function App() {
       <Stack.Screen name='ResultsScreen' component={ResultsScreen}/>
       <Stack.Screen name='SuffixesScreen' component={SuffixesScreen}/>
       <Stack.Screen name='PrefixesScreen' component={PrefixesScreen}/>
+      <Stack.Screen name='SplashScreen' component={SplashScreen}/>
       </Stack.Navigator>
     </NavigationContainer>
   );

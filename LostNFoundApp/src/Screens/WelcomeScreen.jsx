@@ -4,9 +4,9 @@ import { StyleSheet, Text, View,Image,TouchableOpacity } from 'react-native'
 const WelcomeScreen = ({navigation}) => {
   return (
     <View style={styles.container}>
-     <Image style={styles.image} source={require('../Images/black-lost-found.jpg')}/>
+     <Image style={styles.image} source={require('../Images/learner1.jpeg')}/>
      <View style={{display:'flex',justifyContent:'center',marginVertical:60,}}>
-     <Text>Let Us help You Find Your Student Card</Text>
+     {/* <Text>Let Us help You Find Your Student Card</Text> */}
      </View>
      
      <View style={{justifyContent:'center',flexDirection:'row',marginVertical:60,}}>

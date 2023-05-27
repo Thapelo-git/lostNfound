@@ -10,7 +10,7 @@ import AdminHome from './AdminHome';
 import SplashScreen from './SplashScreen';
 //AdminView
 const AdminView = ({navigation,route}) => {
-  const [page,setPage]=useState(0)
+  const [page,setPage]=useState(1)
   return (
     <View>
       <View style={styles.headerContainer}>
@@ -35,33 +35,33 @@ const AdminView = ({navigation,route}) => {
         <View style={{justifyContent:'center',alignItems:'center'}}>
       <View style={{flexDirection:'row',justifyContent:'center',alignItems:'center',
     width:250,height:60,}}>
-          <TouchableOpacity style={{width:130,height:45,borderColor:page === 0?'#3EA055':'gainsboro',justifyContent:'center',
+          {/* <TouchableOpacity style={{width:130,height:45,borderColor:page === 0?'#3EA055':'gainsboro',justifyContent:'center',
         alignItems:'center',borderWidth:1}} 
         onPress={()=>setPage(0)}>
-              <Text style={{color:page===0?'#3EA055':'gainsboro',fontWeight:'bold'}}>Add Student</Text>
-          </TouchableOpacity>
+              <Text style={{color:page===0?'#3EA055':'gainsboro',fontWeight:'bold'}}>list of  Student</Text>
+          </TouchableOpacity> */}
           <TouchableOpacity style={{width:130,height:45,borderColor:page === 1?'#3EA055':'gainsboro',justifyContent:'center',
         alignItems:'center',borderWidth:1}} 
         onPress={()=>setPage(1)}>
-              <Text style={{color:page===1?'#3EA055':'gainsboro',fontWeight:'bold'}}>Lost Card</Text>
+              <Text style={{color:page===1?'#3EA055':'gainsboro',fontWeight:'bold'}}>List of students</Text>
           </TouchableOpacity>
-          <TouchableOpacity style={{width:130,height:45,borderColor:page === 2?'#3EA055':'gainsboro',justifyContent:'center',
+          {/* <TouchableOpacity style={{width:130,height:45,borderColor:page === 2?'#3EA055':'gainsboro',justifyContent:'center',
         alignItems:'center',borderWidth:1}}
         onPress={()=>setPage(2)}>
               <Text style={{color:page===2?'#3EA055':'gainsboro',fontWeight:'bold'}}>Found Card</Text>
-          </TouchableOpacity>
+          </TouchableOpacity> */}
       </View>
       <View style={{
     width:'100%',}}>
-      {
+      {/* {
             page === 0?(<LostDetails/>):(null)
-        }
+        } */}
         {
             page === 1?(<AdminHome navigation={navigation}/>):(null)
         }
-         {
+         {/* {
             page === 2?(<SplashScreen navigation={navigation}/>):(null)
-        }
+        } */}
         
         </View>
       

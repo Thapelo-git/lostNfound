@@ -51,9 +51,9 @@ const SignIn = ({props}) => {
    
   return (
 <SafeAreaView style={{backgroundColor:'#fff',width:'100%',height:'100%'}}>
-            <TouchableOpacity style={{width:'100%',display:'flex',justifyContent:'flex-start',marginVertical:30}}
+            <TouchableOpacity style={{width:'100%',display:'flex',justifyContent:'center',alignItems:'center',marginVertical:30}}
             onPress={()=>navigation.navigate('Adminlogin')}>
-            <Image style={styles.image} source={require('../Images/lostCard.jpg')}/>
+            <Image style={styles.image} source={require('../Images/learner2.jpeg')}/>
             </TouchableOpacity>
             <View style={{width:'100%',padding:20,}}>
             
@@ -158,8 +158,10 @@ const styles = StyleSheet.create({
         
     },
     image:{
-        height:100,
-        width:100,
+        height:130,
+        width:200,
+        borderRadius:15,
+
         
       },
     headerContainer:{
