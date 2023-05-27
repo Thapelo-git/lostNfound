@@ -27,13 +27,13 @@ const StudentProfile = ({navigation,route}) => {
     })
     const editprofile=(data)=>{
       // const {location,Price,} =data
-  db.ref('TutorUsers').child(uid).update({fullname:name,email,phonenumber,})
-      .then(()=>db.ref('TutorUsers').once('value'))
+  db.ref('StudentCard').child(uid).update({fullname:name,email,phonenumber,})
+      .then(()=>db.ref('StudentCard').once('value'))
       .then(snapshot=>snapshot.val())
       .catch(error => ({
         errorCode: error.code,
         errorMessage: error.message
-      }));
+      })); 
       // navigation.navigate('Profile')
     }
   return (

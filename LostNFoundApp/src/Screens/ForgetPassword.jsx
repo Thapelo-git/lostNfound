@@ -16,7 +16,6 @@ const deviceWidth=Dimensions.get("window").width
 const ForgetPassword = ({navigation}) => {
     const ReviewSchem =yup.object({
         email:yup.string().required().min(6),
-        password:yup.string().required().min(6),
     })
     const signIn = async(data)=>{
         const { email,} = data;

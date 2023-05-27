@@ -25,9 +25,9 @@ const TabScreen = () => {
         name="Home"
         component={HomeScreen}
         options={{
-          tabBarLabel: 'Search',
+          tabBarLabel: 'Home',
           tabBarIcon: ({ color }) => (
-          <FontAwesome name="search" color={color} size={24} />
+          <FontAwesome name="home" color={color} size={24} />
           ),
         }}
       />
@@ -43,7 +43,7 @@ const TabScreen = () => {
           ),
         }}
       /> */}
-      <Tab.Screen
+      {/* <Tab.Screen
         name="Found"
         component={FoundDetails}
         options={{
@@ -53,7 +53,7 @@ const TabScreen = () => {
           
           ),
         }}
-      />
+      /> */}
       <Tab.Screen
         name="Profile"
         component={Profile}

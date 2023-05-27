@@ -20,6 +20,10 @@ import StudentProfile from './src/Screens/StudentProfile';
 import Adminlogin from './src/Screens/Adminlogin';
 import AdminHome from './src/Screens/AdminHome';
 import AdminView from './src/Screens/AdminView';
+import QuizScreen from './src/Quiz/QuizScreen';
+import ResultsScreen from './src/Quiz/ResultsScreen';
+import SuffixesScreen from './src/Quiz/SuffixesScreen';
+import PrefixesScreen from './src/Quiz/PrefixesScreen';
 
 
 const Stack = createNativeStackNavigator()
@@ -53,7 +57,10 @@ export default function App() {
       <Stack.Screen name="Adminlogin" component={Adminlogin} />
       <Stack.Screen name="AdminHome" component={AdminHome} />
       <Stack.Screen name="AdminView" component={AdminView} />
-      
+      <Stack.Screen name='QuizScreen' component={QuizScreen}/>
+      <Stack.Screen name='ResultsScreen' component={ResultsScreen}/>
+      <Stack.Screen name='SuffixesScreen' component={SuffixesScreen}/>
+      <Stack.Screen name='PrefixesScreen' component={PrefixesScreen}/>
       </Stack.Navigator>
     </NavigationContainer>
   );

@@ -12,18 +12,33 @@ import { auth,db } from './Firebase';
 import ModelSearch from './ModelSearch';
 import LostScreen from './LostScreen';
 import FoundScreen from './FoundScreen';
+import ResultsScreen from '../Quiz/ResultsScreen';
 const { width } = Dimensions.get("screen")
 const cardWidth = width / 1.8
 const HomeScreen = ({navigation}) => {
-    const [CurrentName, setName] = useState('')
-    const [Email, setEmail] = useState('')
-    const [PhoneNum, setPhonenumber] = useState('')
+    
     const [filteredDataSource, setFilteredDataSource] = useState();
     const [masterDataSource, setMasterDataSource] = useState([]);
     const [Student, setStudent] = useState([])
 
-    const user = auth.currentUser.uid;
-    
+
+    const [name, setName] = useState('')
+    const [email, setEmail] = useState('')
+    const [phonenumber, setPhonenumber] = useState('')
+    const [Uid,setUid]=useState('')
+    const [answers, setAnswers] = useState('')
+   const user = auth.currentUser.uid;
+    useEffect(() => {
+        db.ref('/StudentCard/' + user).on('value', snap => {
+
+            setName(snap.val() && snap.val().fullname);
+            setPhonenumber(snap.val().phonenumber)
+            setEmail(snap.val().email)
+            setAnswers(snap.val().answers)
+            setUid(snap.val().uid)
+        }) 
+
+    }, [])
     const [StudentsList, setStudentsList] = useState([]);
     const [StudentContainer, setStudentContainer] = useState('')
     const FilterFunction = (text) => {
@@ -75,7 +90,7 @@ const HomeScreen = ({navigation}) => {
             <Text style={{
                 fontSize: 18, marginLeft: 10,
                 marginTop: 18
-            }}>{CurrentName}</Text>
+            }}>{name}</Text>
         </View>
         {/* <TouchableOpacity onPress={navigation.navigate('Notification')}>
   <Ionicons name="notifications" size={24}/>
@@ -87,12 +102,12 @@ const HomeScreen = ({navigation}) => {
           <TouchableOpacity style={{width:130,height:45,borderColor:page === 0?'#3EA055':'gainsboro',justifyContent:'center',
         alignItems:'center',borderWidth:1}} 
         onPress={()=>setPage(0)}>
-              <Text style={{color:page===0?'#3EA055':'gainsboro',fontWeight:'bold'}}>Lost Card</Text>
+              <Text style={{color:page===0?'#3EA055':'gainsboro',fontWeight:'bold'}}>Course</Text>
           </TouchableOpacity>
           <TouchableOpacity style={{width:130,height:45,borderColor:page === 1?'#3EA055':'gainsboro',justifyContent:'center',
         alignItems:'center',borderWidth:1}}
         onPress={()=>setPage(1)}>
-              <Text style={{color:page===1?'#3EA055':'gainsboro',fontWeight:'bold'}}>Found Card</Text>
+              <Text style={{color:page===1?'#3EA055':'gainsboro',fontWeight:'bold'}}>Grade</Text>
           </TouchableOpacity>
       </View>
       <View style={{
@@ -101,7 +116,7 @@ const HomeScreen = ({navigation}) => {
             page === 0?(<LostScreen navigation={navigation}/>):(null)
         }
         {
-            page === 1?(<FoundScreen navigation={navigation}/>):(null)
+            page === 1?(<ResultsScreen navigation={navigation}/>):(null)
         }
         
         </View>

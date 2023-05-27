@@ -47,22 +47,22 @@ const ViewRating = ({navigation,route}) => {
                     <TextInput
                         style={{ fontSize: 18, flex: 1, marginLeft: 10 }}
                         
-                        placeholder="Enter  Student ID Number"
+                        placeholder="Enter  Student  Number"
                         onChangeText={(text) => setSearchText(text)} />
                   
                 </View>
             </View>
             {
-              Student.IDnumber === searchText ?(
+              Student.StudentNumber === searchText ?(
                 <>
-                <Text>Correct ID</Text>
+                <Text>Correct Student number</Text>
                 <Text>Remove Card from List</Text>
                 <TouchableOpacity style={styles.signinButton}
           onPress={()=>updateAvailability(Student.key)} >
                   <Text style={styles.signinButtonText}>Remove</Text>
                   </TouchableOpacity></>
               ):(<>
-              <Text>Wrong ID number</Text></>)
+              <Text>Wrong Student number</Text></>)
             }
     </View>
   )
