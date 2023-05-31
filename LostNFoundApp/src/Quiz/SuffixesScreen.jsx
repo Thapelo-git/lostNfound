@@ -21,6 +21,13 @@ const SuffixesScreen = () => {
 <Text>-...ing - Action or results[ painting, cooking]</Text>
 <Text>-... ion - A process[ Decoration, organisation]</Text>
 <Text>-...ess - makes a feminine form [ mistress, waitress]</Text>
+<Text>Suffix is a letter or group of letters, but it appears at the end of any word. It is used to change the word so that it can fit into a sentence grammatically. Like forget and forgetful “ful” is the suffix here.</Text>
+
+<Text style={{fontWeight:'bold',color:"green"}}>Important Points on Suffix</Text>
+<Text>-Like prefixes, many suffixes have the same meaning. The best example is: ‘-er’, which you add at the end of any word, represent a person who’s  performing an action. Further, ‘er’  is also added at the end of an adverbs and adjectives. This helps in the comparison of two things. 
+    Like slow will be slower and fast will be faster.</Text>
+<Text>-For suffixes, the spelling of the base word can change when you add a suffix at the end. For example: crazy will change to crazier or craziness.
+</Text>
     </View>
   )
 }

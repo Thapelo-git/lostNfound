@@ -36,7 +36,7 @@ const ResultsScreen = ({navigation,route}) => {
         <Text>Questions Answered</Text>
         {/* <Text>{route.params.index}</Text> */}
     </View>
-    <Pressable style={{backgroundColor:'#fff',height:300,borderRadius:7,marginTop:20}}>
+    {/* <Pressable style={{backgroundColor:'#fff',height:400,borderRadius:7,marginTop:20}}> */}
     <Text style={{color:'magenta',fontSize:15,fontWeight:'500',textAlign:'center',marginTop:8}}>Score Card</Text>
     <FlatList numColumns={2} data={answers} renderItem={({item,i})=>(
         <View style={{alignItems:'center',justifyContent:'center',margin:10,flexDirection:'row',
@@ -47,7 +47,7 @@ const ResultsScreen = ({navigation,route}) => {
                 {/* {setPasscount(Passcount+1)} */}
                   <Ionicons style={{
                     borderColor: '#00ffff', textAlign: 'center', borderWidth: 0.5,
-                    width: 40, height: 40,  padding: 10,marginLeft:5,
+                    width: 20, height: 20,  padding: 10,marginLeft:5,
                 }} name='checkmark-circle' size={20} color='green' />
                 </>
             ):(
@@ -58,7 +58,7 @@ const ResultsScreen = ({navigation,route}) => {
         </View>
     )}/>
    
-    </Pressable>
+    {/* </Pressable> */}
     {/* <Text>{Passcount}</Text> */}
     {/* <Pressable
     onPress={navigation.navigate('HomeScreen')}

@@ -15,7 +15,7 @@ const AdminHome = ({navigation}) => {
   const [masterDataSource, setMasterDataSource] = useState([]);
   const user = auth.currentUser.uid;
   useEffect(() => {
-      db.ref('/StudentResults').on('value', snap => {
+      db.ref('/StudentCard').on('value', snap => {
 
           const Student = []
           snap.forEach(action => {
@@ -25,7 +25,7 @@ const AdminHome = ({navigation}) => {
                   key: key,
                  
                   answers:data.answers,phonenumber:data.phonenumber,
-                  name:data.name, email:data.email,
+                  name:data.fullname, email:data.email,
                   
               })
               setStudent(Student)

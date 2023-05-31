@@ -24,7 +24,7 @@ const SplashScreen = ({navigation,route}) => {
         <Text>Questions Answered</Text>
         {/* <Text>{route.params.index}</Text> */}
     </View>
-    <Pressable style={{backgroundColor:'#fff',height:300,borderRadius:7,marginTop:20}}>
+    <Pressable style={{backgroundColor:'#fff',borderRadius:7,marginTop:20}}>
     <Text style={{color:'magenta',fontSize:15,fontWeight:'500',textAlign:'center',marginTop:8}}>Score Card</Text>
     <FlatList numColumns={2} data={Answers} renderItem={({item,i})=>(
         <View style={{alignItems:'center',justifyContent:'center',margin:10,flexDirection:'row',
